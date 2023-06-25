@@ -2,8 +2,9 @@ import Link from "next/link";
 import React from "react";
 import Logo from "./Logo";
 import { useRouter } from "next/router";
-import {GithubIcon, LinkedInIcon, PinterestIcon, TwitterIcon} from "./Icons";
+import {GithubIcon, LinkedInIcon, MoonIcon, PinterestIcon, SunIcon, TwitterIcon} from "./Icons";
 import {motion} from "framer-motion";
+import useThemeSwitcher from "./hooks/useThemeSwitcher";
 type CustomLinkProps = {
     href: string;
     title: string;
@@ -17,7 +18,7 @@ const CustomLink = (props: CustomLinkProps ) => {
       {props.title}
 
       <span className={`h-[1px] inline-block bg-black absolute left-0 -bottom-0.5
-       group-hover:w-full transition-[width] ease duration-300 ${router.asPath === props.href ? 'w-full' : 'w-0'}`}>
+       group-hover:w-full transition-[width] ease duration-300 ${router.asPath === props.href ? 'w-full' : 'w-0'} dark:bg-light`}>
         &nbsp;
       </span>
     </Link>
@@ -25,8 +26,10 @@ const CustomLink = (props: CustomLinkProps ) => {
 }
 
 const Navbar = () => {
+
+  const [mode, setMode] = useThemeSwitcher()
   return (
-    <header className="w-full px-32 py-8 font-medium flex items-center justify-between">
+    <header className="w-full px-32 py-8 font-medium flex items-center justify-between dark:text-light">
       <nav>
         <CustomLink href="/" title="Home" className="mr-4" />
         <CustomLink href="/about" title="About" className="mx-4" />
@@ -68,16 +71,14 @@ const Navbar = () => {
           {" "}
           <PinterestIcon />
         </Link> */}
-        <motion.a
-          href="https://Google.com"
-          target={"_blank"}
-          whileHover={{ y: -2 }}
-          whileTap={{ scale: 0.9 }}
-          className="w-6 ml-4"
-        >
-          {" "}
-          T
-        </motion.a>
+       <button onClick={() => setMode(mode === "light" ? "dark" : "light")}
+       className={`ml-3 flex items-center justify-center rounded-full p-1 ${mode === "light" ? "bg-dark text-light"  : "bg-light text-dark"}`}
+       >
+        {mode === "dark" ? (
+          <SunIcon className="fill-dark" />) : (
+          <MoonIcon className="fill-dark" />
+        )}
+       </button>
       </nav>
     </header>
   );
