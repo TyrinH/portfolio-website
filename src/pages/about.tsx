@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import Head from "next/head";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
+import TransitionEffect from "@/components/TransitionEffect";
 
 export default function About() {
   return (
@@ -11,6 +12,7 @@ export default function About() {
         <title>Tyrin Holloway | About Page</title>
         <meta name="description" content="About me page" />
       </Head>
+      <TransitionEffect />
       <main className="flex w-full flex-col items-center justify-center dark:text-light">
         <Layout className="pt-16">
           <AnimatedText text="Insert some text here pls" className="mb-16 lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8" />

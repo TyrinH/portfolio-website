@@ -9,6 +9,7 @@ import MoodTracker from "../../public/images/mood-tracker-screenshot.jpg";
 
 import React from 'react'
 import { GithubIcon } from "@/components/Icons";
+import TransitionEffect from "@/components/TransitionEffect";
 
 type FeaturedProjectProps = {
     type: string;
@@ -97,6 +98,7 @@ export default function Page() {
         <title>Tyrin Holloway | Projects Page</title>
         <meta name="description" content="About me page" />
       </Head>
+      <TransitionEffect />
       <main className="flex w-full flex-col mb-16 items-center justify-center dark:text-light">
         <Layout className="pt-16">
           <AnimatedText text="Insert some text here pls" className='mb-16 lg:!text-7xl sm:mb-8 sm:!text-6xl xs:!text-4xl'/>
